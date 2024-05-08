@@ -3,30 +3,46 @@
 const response = require('./res');
 const connection = require('./connection');
 
-exports.index = function(req, res){
-    response.ok("Rest API Berjalan",res);
+exports.index = function (req, res) {
+    response.ok("Rest API Berjalan", res);
 }
 
 //menampilkan semua data mahasiswa
 exports.GetAllMahasiswa = function (req, res) {
-    connection.query('SELECT * FROM mahasiswa', function(error, rows, field ){
+    connection.query('SELECT * FROM mahasiswa', function (error, rows, fields) {
         if (error) {
             console.log(error);
         } else {
-            response.ok(rows, res)
+            response.ok(rows, res);
         }
-    }); 
+    });
 };
 
 //menampilkan semua data mahasiswa berdasarkan id
-exports.GetAllMahasiswaById = function (req, res){
+exports.GetMahasiswaById = function (req, res) {
     let id = req.params.id;
     connection.query('SELECT * FROM mahasiswa WHERE id = ?', [id],
-        function(error, rows, field){
+        function (error, rows, fields) {
             if (error) {
-                console.log(error)
+                console.log(error);
             } else {
-                response.ok(rows, res)
+                response.ok(rows, res);
+            }
+        });
+}
+
+//menambah data mahasiswa
+exports.AddData = function (req, res) {
+    const nim = req.body.nim;
+    const nama = req.body.nama;
+    const jurusan = req.body.jurusan;
+
+    connection.query('INSERT INTO mahasiswa (nim,nama,jurusan) VALUES(?,?,?)', [nim, nama, jurusan],
+        function (error, rows, fields){
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil tambah data", res);
             }
         });
 }
