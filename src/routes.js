@@ -16,4 +16,7 @@ module.exports = function(app){
 
     //ubah data mahasiswa
     app.route('/ubah/:id').put(controller.editData);
+
+    //delete data
+    app.route('/hapus/:id').delete(controller.deleteData);
 };
