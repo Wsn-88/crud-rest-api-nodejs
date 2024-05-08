@@ -6,11 +6,14 @@ module.exports = function(app){
     app.route('/').get(controller.index);
 
     //menampilkan semua data mahasiswa
-    app.route('/mahasiswa').get(controller.GetAllMahasiswa);
+    app.route('/mahasiswa').get(controller.getAllMahasiswa);
 
     //tampil mahasiswa by id
-    app.route('/mahasiswa/:id').get(controller.GetMahasiswaById);
+    app.route('/mahasiswa/:id').get(controller.getMahasiswaById);
 
     //tambah data mahasiswa
-    app.route('/addMahasiswa').post(controller.AddData);
+    app.route('/tambah').post(controller.addData);
+
+    //ubah data mahasiswa
+    app.route('/ubah/:id').put(controller.editData);
 };
