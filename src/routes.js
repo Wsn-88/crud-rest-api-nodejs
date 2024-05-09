@@ -19,4 +19,7 @@ module.exports = function(app){
 
     //delete data
     app.route('/hapus/:id').delete(controller.deleteData);
+
+    //tampil grup nested matakuliah
+    app.route('/tampilmatakuliah').get(controller.viewGroupMatakuliah);
 };
