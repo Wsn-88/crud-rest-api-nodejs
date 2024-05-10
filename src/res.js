@@ -29,6 +29,27 @@ exports.notFound = function (values, res) {
     res.json(results);
     res.end();
 }
+
+exports.Unauthorized = function (values, res) {
+    const results = {
+        'status' : values,
+        'value' : 401
+    };
+
+    res.json(results);
+    res.end();
+}
+
+exports.badRequest = function (values, res) {
+    const results = {
+        'status' : values,
+        'value' : 400
+    };
+
+    res.json(results);
+    res.end();
+}
+
 //respon untuk nested matakuliah
 exports.okNested = function (values, res){
     //lakukan akumulasi
